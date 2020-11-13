@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'career_sheets/index'
-  get 'career_sheets/show'
-  get 'career_sheets/edit'
-  get 'career_sheets/create'
+  resources :career_sheets
   get 'career_sheets/delete'
+  root to: 'career_sheets#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
