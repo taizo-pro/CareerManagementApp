@@ -6,6 +6,7 @@ class CareerSheetsController < ApplicationController
   end
 
   def new
+    @career_sheets = CareerSheet.new
   end
 
   def edit

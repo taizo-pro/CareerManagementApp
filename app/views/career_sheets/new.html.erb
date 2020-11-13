@@ -1,1 +1,18 @@
 <h1>スタッフ経歴書 新規登録</h1>
+
+<%= form_with model: @career_sheets do |f| %>
+
+<div>
+  <%= f.label :name, "イニシャル" %>
+  <%= f.text_field :name, placeholder: "" %>
+</div>
+<div>
+  <%= f.label :description, "自己PR" %>
+  <%= f.text_area :description, placeholder: "" %>
+</div>
+<div>
+  <%= f.label :birthday, "誕生日" %>
+  <%= f.date_select :birthday, use_month_numbers: true %>
+</div>
+
+<% end %>
