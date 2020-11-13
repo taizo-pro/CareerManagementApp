@@ -1,0 +1,2 @@
+class CareerSheet < ApplicationRecord
+end
