@@ -12,8 +12,9 @@
         <th></th>
         <th></th>
       </tr>
+      <% @career_sheets.each do |career_sheet| %>
       <tr>
-        <td></td>
+        <td><%= career_sheet.name %></td>
         <td></td>
         <td></td>
         <td></td>
@@ -21,6 +22,7 @@
         <td></td>
         <td></td>
       </tr>
+      <% end %>
       </table>
       <%= link_to "+ 経歴書を追加する", new_career_sheet_path %>
     </div>
