@@ -1,66 +1,15 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>CareerManagementApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<head>
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-  <style media="screen">
-    .ui.table,
-    .ui.form .field>label,
-    .ui.accordion .title:not(.ui) {
-      font-size: 1.1rem !important;
-    }
-  </style>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_pack_tag 'application' %>
-
-</head>
-
-<body>
-  <div id="header" class="ui fluid inverted attached borderless small menu">
-    <% if current_user %>
-      <% if %w[business].include?(current_user.role) %>
-        <!-- 担当者名を入れた状態で検索したときのURL -->
-        <a href="/orders?q[kikaku_cd_eq]=&q[orderno_cont]=&q[scode_cont]=&q[status_eq]=&q[group_name_eq]=&q[user_id_eq]=<%= current_user.employee_id
-%>&q[user_name_cont]=&order[deadline]=0&action=" class="header item">じゃらんネットWeb入稿システム</a>
-      <% else %>
-        <a href="/" class="header item">じゃらんネットWeb入稿システム</a>
-      <% end %>
-
-      <% if %w[business].include?(current_user.role) %>
-        <a class="item" href="/orders?q[kikaku_cd_eq]=&q[orderno_cont]=&q[scode_cont]=&q[status_eq]=&q[group_name_eq]=&q[user_id_eq]=<%= current_user.employee_id
-%>&q[user_name_cont]=&order[deadline]=0&action=">
-        <i class="icon file"></i>入稿受付一覧</a>
-      <% else %>
-        <a class="item" href="/">
-        <i class="icon file"></i>入稿受付一覧</a>
-      <% end %>
-      <% if %w[admin staff].include?(current_user.role) %>
-        <a class="item" href="/kikaku_dates"><i class="icon file"></i>スタッフ用一覧</a>
-      <% end %>
-      <% if %w[admin].include?(current_user.role) %>
-        <a class="item" href="/users"><i class="icon user"></i>アカウント管理</a>
-      <% end %>
-      <div class="right menu">
-        <a href="/password_reset" class="item">パスワード変更</a>
-        <%= link_to('ログアウト', destroy_user_session_path, method: :delete, class: "active grey item") %>
-      </div>
-    <% end %>
-  </div>
-  <% flash.each do |key, value| %>
-    <% style = (['error','alert'].include?(key)) ? 'error' : 'positive' %>
-    <% if value %>
-      <%= content_tag(:div, value.html_safe, class: "ui message #{style}") %>
-    <% end %>
-  <% end %>
-  <%= yield %>
-
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>
-
