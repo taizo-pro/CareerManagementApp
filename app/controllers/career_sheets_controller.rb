@@ -1,7 +1,6 @@
 class CareerSheetsController < ApplicationController
   def index
     @career_sheets = CareerSheet.all
-    # @career_sheets = CareerSheet.all
   end
 
   def show
